@@ -1,0 +1,8 @@
+.detail {
+  flex: 5;
+}
+
+.detailUser {
+  display: flex;
+  margin: 20px;
+}

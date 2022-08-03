@@ -1,0 +1,68 @@
+.DHContainerContainer {
+  display: flex;
+  margin-top: 20px;
+}
+
+.DHShow {
+  flex: 1;
+  padding: 20px;
+  -webkit-box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
+}
+
+.DHShowTop {
+  display: flex;
+  align-items: center;
+}
+
+.DHShowImg {
+  width: 250px;
+  height: 100px;
+  border-radius: 5%;
+  object-fit: cover;
+}
+
+.DHShowTopTitle {
+  display: flex;
+  flex-direction: column;
+  margin-left: 20px;
+}
+
+.DHShowTypeAccount {
+  font-weight: 600;
+}
+
+.DHShowBottom {
+  margin-top: 20px;
+}
+
+.DHShowTitle {
+  font-size: 14px;
+  font-weight: 600;
+  color: rgb(175, 170, 170);
+}
+
+.DHShowInfo {
+  display: flex;
+  align-items: center;
+  margin: 20px 0px;
+  color: #444;
+}
+
+.DHShowIcon {
+  font-size: 16px !important;
+}
+
+.DHShowInfoTitle {
+  margin-left: 10px;
+}
+
+.DHshowButton {
+  border: none;
+  border-radius: 10px;
+  padding: 5px 10px;
+  background-color: red;
+  color: white;
+  cursor: pointer;
+  margin-left: 190px;
+}

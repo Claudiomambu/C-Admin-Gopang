@@ -10,14 +10,13 @@ import {
 } from "@material-ui/icons";
 import "./detailWarung.css";
 
-export default function DetailWarung() {
+export default function DetailWarung(props) {
   return (
     <div className="DWContainer">
       <div className="DWShow">
         <div className="DWShowTop">
           <img
-            src="https://kulinerkota.com/wp-content/uploads/2020/06/Warung-Ayam-Bakar-KQ-5.jpg"
-            alt=""
+            src={`data:image/jpeg;base64,${props.photo}`}
             className="DWShowImg"
           />
           {/* <div className="DWShowTopTitle">
@@ -28,17 +27,15 @@ export default function DetailWarung() {
           <span className="DWShowTitle">Warung Details</span>
           <div className="DWShowInfo">
             <Storefront className="DWShowIcon" />
-            <span className="DWShowInfoTitle">Warung Ayam Bakar KQ-5</span>
+            <span className="DWShowInfoTitle">{props.name}</span>
           </div>
           <div className="DWShowInfo">
             <LocationSearching className="DWShowIcon" />
-            <span className="DWShowInfoTitle">
-              Marinsow Village, North Likupang
-            </span>
+            <span className="DWShowInfoTitle">{props.alamat}</span>
           </div>
           <div className="DWShowInfo">
             <Timer className="DWShowIcon" />
-            <span className="DWShowInfoTitle">20 Minute</span>
+            <span className="DWShowInfoTitle">{props.delivery}</span>
           </div>
 
           <span className="DWShowTitle">Contact Details</span>

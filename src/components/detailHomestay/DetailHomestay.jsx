@@ -35,7 +35,7 @@ export default function DetailHomestay(props) {
           </div>
           <div className="DHShowInfo">
             <AttachMoney className="DHShowIcon" />
-            <span className="DHShowInfoTitle">Rp.200.000 / Night</span>
+            <span className="DHShowInfoTitle">Rp.{props.price} / Night</span>
           </div>
           <span className="DHShowTitle">Contact Details</span>
           <div className="DHShowInfo">

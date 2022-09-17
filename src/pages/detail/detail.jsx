@@ -7,6 +7,7 @@ import { useParams, Link } from "react-router-dom";
 
 export default function Detail() {
   const [onHomestay, setOnHomestay] = useState({});
+  const [onWarung, setOnWarung] = useState({});
   const { uid } = useParams();
 
   useEffect(() => {
@@ -22,15 +23,34 @@ export default function Detail() {
       });
   }, []);
 
+  useEffect(() => {
+    firebase
+      .database()
+      .ref(`warung/${uid}`)
+      .on("value", (res) => {
+        if (res.val()) {
+          setOnWarung(res.val());
+
+          // console.log(products);
+        }
+      });
+  }, []);
+
   return (
     <div className="detail">
       <div className="detailUser">
         <DetailHomestay
-          name={onHomestay.name}
           photo={onHomestay.photo}
+          name={onHomestay.name}
           location={onHomestay.location}
+          price={onHomestay.price}
         />
-        <DetailWarung />
+        <DetailWarung
+          photo={onWarung.photo}
+          name={onWarung.name}
+          alamat={onWarung.alamat}
+          delivery={onWarung.delivery}
+        />
       </div>
     </div>
   );

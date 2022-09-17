@@ -16,8 +16,8 @@ export default function Sidebar() {
         <div className="sidebarMenu">
           <h3 className="sidebarTitle">Dashboard Owner</h3>
           <ul className="sidebarList">
-            <Link to="/" className="link">
-              <li className="sidebarListItem active">
+            <Link to="/Dashboard" className="link">
+              <li className="sidebarListItem">
                 <PermIdentityTwoTone className="sidebarIcon" />
                 Owner
               </li>

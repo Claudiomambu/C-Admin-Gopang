@@ -1,72 +1,86 @@
 import "./userList.css";
-import { DataGrid } from "@material-ui/data-grid";
 import { DeleteOutline } from "@material-ui/icons";
-import { userRows } from "../../dummyData";
-import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useParams, Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import Topbar from "../../components/topbar/Topbar";
+import Sidebar from "../../components/sidebar/Sidebar";
+import firebase from "../../config/firebase";
 
 export default function UserList() {
-  const [data, setData] = useState(userRows);
+  const { uid } = useParams();
+  const [user, setOnUser] = useState([]);
 
-  const handleDelete = (id) => {
-    setData(data.filter((item) => item.id !== id));
+  useEffect(() => {
+    firebase
+      .database()
+      .ref(`users/pelanggan/`)
+      .on("value", (res) => {
+        if (res.val()) {
+          //ubah menjadi array object
+          const rawData = res.val();
+          const productArray = [];
+          // console.log(keranjang[0].namaProduk);
+          Object.keys(rawData).map((key) => {
+            productArray.push({
+              id: key,
+              ...rawData[key],
+            });
+          });
+          setOnUser(productArray);
+
+          // console.log(products);
+        }
+      });
+  }, []);
+
+  const handleDelete = (key) => {
+    firebase.database().ref(`users/pelanggan/${key.id}`).remove();
   };
 
-  const columns = [
-    { field: "id", headerName: "ID", width: 90 },
-    {
-      field: "user",
-      headerName: "User",
-      width: 200,
-      renderCell: (params) => {
-        return (
-          <div className="userListUser">
-            <img className="userListImg" src={params.row.avatar} alt="" />
-            {params.row.username}
-          </div>
-        );
-      },
-    },
-    { field: "email", headerName: "Email", width: 200 },
-    {
-      field: "status",
-      headerName: "Status",
-      width: 120,
-    },
-    {
-      field: "transaction",
-      headerName: "Transaction Volume",
-      width: 160,
-    },
-    {
-      field: "action",
-      headerName: "Action",
-      width: 150,
-      renderCell: (params) => {
-        return (
-          <>
-            <Link to={"/user/" + params.row.id}>
-              <button className="userListEdit">Edit</button>
-            </Link>
-            <DeleteOutline
-              className="userListDelete"
-              onClick={() => handleDelete(params.row.id)}
-            />
-          </>
-        );
-      },
-    },
-  ];
-
   return (
-    <div className="userList">
-      <DataGrid
-        rows={data}
-        disableSelectionOnClick
-        columns={columns}
-        pageSize={8}
-        checkboxSelection
-      />
+    <div>
+      <Topbar />
+      <div className="containerAdmin">
+        <Sidebar />
+        <div className="DataUser">
+          <h3 className="title">User Account</h3>
+          <table className="tabelUser">
+            <tr className="data">
+              <th className="KolomData">Name</th>
+              <th className="KolomData">Email</th>
+              <th className="KolomData">Phone Number</th>
+              <th className="KolomData">Action</th>
+            </tr>
+
+            {/* Mapping Data User (pengguna) */}
+
+            {user.map((key) => (
+              <tr className="widgetLgTr">
+                <td className="widgetLgUser">
+                  <img
+                    src={`data:image/jpeg;base64,${key.photo} `}
+                    className="widgetLgImg"
+                  />
+                  <span className="widgetLgName">{key.name}</span>
+                </td>
+                <td className="widgetLgEmail">{key.email}</td>
+                <td className="widgetLgPhoneNumber">{key.number}</td>
+                <td className="actionForUser">
+                  <Link to={`/user`}>
+                    <button className="actionEdit">Edit</button>
+                  </Link>
+                  <DeleteOutline
+                    className="actionDelete"
+                    // onSubmit={() => handleDelete(key)}
+                    // onClick={() => handleDelete(params.row.id)}
+                    onClick={() => handleDelete(key)}
+                  />
+                </td>
+              </tr>
+            ))}
+          </table>
+        </div>
+      </div>
     </div>
   );
 }

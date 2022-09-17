@@ -7,15 +7,16 @@ import {
   AttachMoney,
 } from "@material-ui/icons";
 import "./detailHomestay.css";
+import React from "react";
+import { useParams } from "react-router-dom";
 
-export default function DetailHomestay() {
+export default function DetailHomestay(props) {
   return (
     <div className="DHContainer">
       <div className="DHShow">
         <div className="DHShowTop">
           <img
-            src="https://asset.kompas.com/crops/fWHyqunJIO-l0VvHfhPZStbzUKM=/0x0:1280x853/750x500/data/photo/2021/03/09/60475ba76ea0d.jpg"
-            alt=""
+            src={`data:image/jpeg;base64,${props.photo}`}
             className="DHShowImg"
           />
           {/* <div className="DHShowTopTitle">
@@ -26,13 +27,11 @@ export default function DetailHomestay() {
           <span className="DHShowTitle">Homestay Details</span>
           <div className="DHShowInfo">
             <HomeOutlined className="DHShowIcon" />
-            <span className="DHShowInfoTitle">Wahyu Homestay</span>
+            <span className="DHShowInfoTitle"> {props.name}</span>
           </div>
           <div className="DHShowInfo">
             <LocationSearching className="DHShowIcon" />
-            <span className="DHShowInfoTitle">
-              Marinsow Village, North Likupang
-            </span>
+            <span className="DHShowInfoTitle">{props.location}</span>
           </div>
           <div className="DHShowInfo">
             <AttachMoney className="DHShowIcon" />

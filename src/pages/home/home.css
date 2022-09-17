@@ -1,8 +1,16 @@
 .home {
-  flex: 5;
+  /* flex: 1; */
+  /* display: flex; */
 }
 
 .homeWidgets {
-  display: flex;
+  /* align-items: stretch; */
+  /* display: flex; */
+  flex-grow: 1;
   margin: 20px;
+}
+
+.containerAdmin {
+  display: flex;
+  /* margin-top: 10px; */
 }

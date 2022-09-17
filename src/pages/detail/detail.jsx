@@ -1,24 +1,36 @@
-import WidgetLg from "../../components/widgetLg/WidgetLg";
 import DetailHomestay from "../../components/detailHomestay/DetailHomestay";
 import DetailWarung from "../../components/detailWarung/DetailWarung";
-import AddWarung from "../../components/addWarung/AddWarung";
 import "./detail.css";
+import firebase from "../../config/firebase";
+import React, { useState, useEffect } from "react";
+import { useParams, Link } from "react-router-dom";
 
-export default function detail() {
+export default function Detail() {
+  const [onHomestay, setOnHomestay] = useState({});
+  const { uid } = useParams();
+
+  useEffect(() => {
+    firebase
+      .database()
+      .ref(`homestay/${uid}`)
+      .on("value", (res) => {
+        if (res.val()) {
+          setOnHomestay(res.val());
+
+          // console.log(products);
+        }
+      });
+  }, []);
+
   return (
     <div className="detail">
-      {/* //   <Chart */}
-      {/* //     data={userData}
-      //     title="User Analytics"
-      //     grid
-      //     dataKey="Active User"
-      //> */}
       <div className="detailUser">
-        {/* <WidgetSm /> */}
-        {/* <WidgetLg /> */}
-        <DetailHomestay />
+        <DetailHomestay
+          name={onHomestay.name}
+          photo={onHomestay.photo}
+          location={onHomestay.location}
+        />
         <DetailWarung />
-        <AddWarung />
       </div>
     </div>
   );

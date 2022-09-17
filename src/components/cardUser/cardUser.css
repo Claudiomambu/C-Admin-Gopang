@@ -1,0 +1,35 @@
+.widgetLgUser {
+  display: flex;
+  align-items: center;
+  font-weight: 600;
+}
+
+.actionDelete {
+  color: red;
+  cursor: pointer;
+  margin-bottom: 5px;
+}
+
+.actionEditOwner {
+  border: none;
+  border-radius: 10px;
+  padding: 5px 10px;
+  background-color: #358be0;
+  color: white;
+  cursor: pointer;
+  margin-right: 20px;
+}
+
+.actionDelete {
+  color: red;
+  cursor: pointer;
+  margin-bottom: 5px;
+}
+
+.widgetLgImg {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 10px;
+}

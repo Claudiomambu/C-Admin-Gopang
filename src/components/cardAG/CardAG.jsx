@@ -42,16 +42,16 @@ const CardAG = () => {
     firebase.database().ref(`gazebo`).push(data);
 
     // firebase.child(`gazebo`).push(data);
+    navigate(`/Dashboard`);
+    setLocation("");
+    setSize("");
+    setPhoto("");
   };
 
-  // navigate(`/gazebo`);
-  // setLocation("");
-  // setSize("");
-  // setPhoto("");
   return (
     <div className="AGContainer">
       <div className="AddGazebostyle">
-        <span className="AddGazeboTitle">Add Gazebo</span>
+        <span className="AddGazeboTitle">Add Gazebo ...</span>
         {/* <form className="userUpdateForm"></form> */}
 
         <div className="userUpdateItem">
@@ -72,6 +72,7 @@ const CardAG = () => {
             value={location}
             onChange={(event) => setLocation(event.target.value)}
           >
+            <option>--- Choose Location ---</option>
             <option value="Paal">Paal</option>
             <option value="Pulisan">Pulisan</option>
             <option value="Kinunang">Kinunang</option>
@@ -86,12 +87,13 @@ const CardAG = () => {
             value={size}
             onChange={(event) => setSize(event.target.value)}
           >
+            <option>--- Choose Size ---</option>
             <option value="3x4">3x4</option>
             <option value="5x4">5x4</option>
             <option value="6x4">6x4</option>
           </select>
           {size}
-          <button className="ButtonADD" onSubmit={handleSubmit}>
+          <button className="ButtonADD" onClick={handleSubmit}>
             Add
           </button>
         </div>

@@ -10,11 +10,12 @@ import {
 import "./detailHomestay.css";
 import React from "react";
 import { useParams } from "react-router-dom";
+import firebase from "../../config/firebase";
 
 export default function DetailHomestay(props) {
-  // const handleDelete = (key) => {
-  //   firebase.database().ref(`homestay/${key.id}`).remove();
-  // };
+  const handleDelete = (key) => {
+    firebase.database().ref(`homestay/${key.id}`).remove();
+  };
 
   return (
     <div className="DHContainer">
@@ -52,7 +53,9 @@ export default function DetailHomestay(props) {
             <MailOutline className="DHShowIcon" />
             <span className="DHShowInfoTitle">annabeck99@gmail.com</span>
           </div> */}
-          <button className="DHshowButton">Delete</button>
+          <button className="DHshowButton" onClick={handleDelete}>
+            Delete
+          </button>
         </div>
       </div>
     </div>

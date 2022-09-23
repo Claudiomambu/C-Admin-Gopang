@@ -61,11 +61,9 @@ export default function WidgetLg() {
             <td className="widgetLgLocation">{key.email}</td>
             <td className="widgetLgHomestayName">{key.number}</td>
             <td className="actionForOwner">
-              {/* <Link to={`/detail`}> */}
               <a href={`/${key.id}/Detail`}>
                 <button className="actionEditOwner">Details</button>
               </a>
-              {/* </Link> */}
               {/* <DeleteOutline
                 className="actionDelete"
                 onClick={() => handleDelete(key)}

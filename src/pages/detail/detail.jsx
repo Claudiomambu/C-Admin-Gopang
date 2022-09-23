@@ -44,6 +44,7 @@ export default function Detail() {
           name={onHomestay.name}
           location={onHomestay.location}
           price={onHomestay.price}
+          description={onHomestay.description}
         />
         <DetailWarung
           photo={onWarung.photo}
@@ -51,6 +52,7 @@ export default function Detail() {
           alamat={onWarung.alamat}
           delivery={onWarung.delivery}
         />
+        {/* <AddGazebo /> */}
       </div>
     </div>
   );

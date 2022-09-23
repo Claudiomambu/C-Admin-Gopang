@@ -1,6 +1,5 @@
-.DWContainerContainer {
+.DWContainer {
   display: flex;
-  margin-top: 20px;
 }
 
 .DWShow {

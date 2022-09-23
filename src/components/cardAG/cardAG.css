@@ -1,40 +1,54 @@
-.AWContainer {
+.AGContainer {
   display: flex;
 }
 
-.AddWarungstyle {
+.AddGazebostyle {
   flex: 2;
   padding: 20px;
   -webkit-box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
   box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
-  margin-left: 20px;
+  /* margin-left: 20px; */
 }
 
-.AddWarungTitle {
+.AddGazeboTitle {
   font-size: 24px;
   font-weight: 600;
+  margin-left: 100;
 }
 
-.userUpdateForm {
+/* .userUpdateForm {
   display: flex;
   justify-content: space-between;
   margin-top: 20px;
-}
+} */
 
-.userUpdateItem {
+/* .userUpdateItem {
   display: flex;
   flex-direction: column;
   margin-top: 10px;
-}
+} */
 
 .ButtonADD {
   border: none;
   border-radius: 10px;
   padding: 5px 10px;
-  background-color: blue;
+  background-color: rgb(20, 150, 197);
   color: white;
   cursor: pointer;
   margin-left: 200px;
   margin-top: 20px;
-  width: 90px;
+  /* width: 90px; */
+}
+
+.RButton {
+  margin-top: 20px;
+  align-items: center;
+}
+
+.rb {
+  margin-left: 50px;
+}
+
+.Title {
+  margin-top: 20px;
 }

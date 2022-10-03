@@ -8,16 +8,30 @@ import {
   FormatAlignLeftOutlined,
 } from "@material-ui/icons";
 import "./detailHomestay.css";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import firebase from "../../config/firebase";
 
 export default function DetailHomestay(props) {
+  const { uid } = useParams();
+  const [onData, setOnData] = useState("false");
+
+  useEffect(() => {
+    firebase
+      .database()
+      .ref(`homestay/${uid}`)
+      .on("value", (res) => {
+        if (res.val()) {
+          setOnData(true);
+        }
+      });
+  }, []);
+
   const handleDelete = (key) => {
     firebase.database().ref(`homestay/${key.id}`).remove();
   };
 
-  return (
+  return onData === true ? (
     <div className="DHContainer">
       <div className="DHShow">
         <div className="DHShowTop">
@@ -57,6 +71,14 @@ export default function DetailHomestay(props) {
             Delete
           </button>
         </div>
+      </div>
+    </div>
+  ) : (
+    <div className="DHKotak">
+      <div className="DHLoading">
+        <h3> Loading ....</h3>
+        <span>If the card display doesn't change, </span>
+        <span>Maybe this account doesn't have Homestay data</span>
       </div>
     </div>
   );

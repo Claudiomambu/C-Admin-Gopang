@@ -1,11 +1,12 @@
-.DHContainerContainer {
+.DGContainer {
   display: flex;
   margin-top: 20px;
 }
 
 .DHShow {
-  flex: 1;
+  flex: 3;
   padding: 20px;
+  margin-left: 10px;
   -webkit-box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
   box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
 }
@@ -65,15 +66,4 @@
   color: white;
   cursor: pointer;
   margin-left: 190px;
-}
-
-.DHLoading {
-  flex: 1;
-  padding: 20px;
-  -webkit-box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
-  box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
-}
-
-.DHKotak {
-  display: flex;
 }

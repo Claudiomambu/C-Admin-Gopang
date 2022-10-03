@@ -2,9 +2,7 @@ import "./Gazebo.css";
 import CardAG from "../../components/cardAG/CardAG";
 import Topbar from "../../components/topbar/Topbar";
 import Sidebar from "../../components/sidebar/Sidebar";
-import DetailHomestay from "../../components/detailHomestay/DetailHomestay";
-import { Link } from "react-router-dom";
-import { useState } from "react";
+import DetailGazebo from "../../components/detailGazebo/DetailGazebo";
 
 export default function Gazebo() {
   return (
@@ -13,15 +11,21 @@ export default function Gazebo() {
       <div className="containerAdmin">
         <Sidebar />
         <div className="UIGazebo">
+          {/* View For Add Gazebo */}
           <div>
+            <div className="judul-AddGazebo">
+              <h3>Add New Gazebo</h3>
+            </div>
+            <div className="View-AddGazebo">
+              <CardAG />
+            </div>
+
+            {/* View For List Gazebo */}
             <div className="judul">
               <h3>List Gazebo</h3>
-              <button className="ButtonAG">Add</button>
-              <hr />
             </div>
             <div className="list-Gazebo">
-              {/* <DetailHomestay /> */}
-              <CardAG />
+              <DetailGazebo />
             </div>
           </div>
         </div>

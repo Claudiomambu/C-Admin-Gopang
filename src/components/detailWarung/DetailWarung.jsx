@@ -9,9 +9,26 @@ import {
   Timer,
 } from "@material-ui/icons";
 import "./detailWarung.css";
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import firebase from "../../config/firebase";
 
 export default function DetailWarung(props) {
-  return (
+  const { uid } = useParams();
+  const [onDataW, setOnDataW] = useState("false");
+
+  useEffect(() => {
+    firebase
+      .database()
+      .ref(`warung/${uid}`)
+      .on("value", (res) => {
+        if (res.val()) {
+          setOnDataW(true);
+        }
+      });
+  }, []);
+
+  return onDataW === true ? (
     <div className="DWContainer">
       <div className="DWShow">
         <div className="DWShowTop">
@@ -48,6 +65,14 @@ export default function DetailWarung(props) {
             <Button variant="outlined">Default</Button>
           </div> */}
         </div>
+      </div>
+    </div>
+  ) : (
+    <div className="DHKotak">
+      <div className="DHLoading">
+        <h3> Loading ....</h3>
+        <span>If the card display doesn't change, </span>
+        <span>Maybe this account doesn't have Warung data</span>
       </div>
     </div>
   );

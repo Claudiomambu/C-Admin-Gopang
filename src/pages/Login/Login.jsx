@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+// import { Alert } from '@mui/material';
 import { Link, useNavigate } from "react-router-dom";
 import Input from "../../components/Input/input";
 import Button from "../../components/Button/button";
@@ -36,6 +37,7 @@ const Login = () => {
       })
       .catch((error) => {
         console.log("error", error);
+        // <Alert severity="error">This is an error alert — check it out!</Alert>;
         // const MySwal = withReactContent(Swal);
 
         // MySwal.fire({

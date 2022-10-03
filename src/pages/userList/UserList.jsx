@@ -66,13 +66,15 @@ export default function UserList() {
                 <td className="widgetLgEmail">{key.email}</td>
                 <td className="widgetLgPhoneNumber">{key.number}</td>
                 <td className="actionForUser">
-                  <Link to={`/user`}>
-                    <button className="actionEdit">Edit</button>
-                  </Link>
+                  {/* <button
+                    className="actionEdit"
+                    
+                  >
+                    hapus
+                  </button> */}
+
                   <DeleteOutline
                     className="actionDelete"
-                    // onSubmit={() => handleDelete(key)}
-                    // onClick={() => handleDelete(params.row.id)}
                     onClick={() => handleDelete(key)}
                   />
                 </td>

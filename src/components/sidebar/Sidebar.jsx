@@ -5,6 +5,7 @@ import {
   AttachMoney,
   BarChart,
   PermIdentityTwoTone,
+  DeckOutlined,
 } from "@material-ui/icons";
 import { Link } from "react-router-dom";
 
@@ -24,7 +25,7 @@ export default function Sidebar() {
           </ul>
         </div>
         <div className="sidebarMenu">
-          <h3 className="sidebarTitle">Quick Menu</h3>
+          <h3 className="sidebarTitle">Another Menu</h3>
           <ul className="sidebarList">
             <Link to="/users" className="link">
               <li className="sidebarListItem">
@@ -34,18 +35,18 @@ export default function Sidebar() {
             </Link>
             <Link to="/gazebo" className="link">
               <li className="sidebarListItem">
-                <Storefront className="sidebarIcon" />
-                Gazebo
+                <DeckOutlined className="sidebarIcon" />
+                List Gazebo
               </li>
             </Link>
-            <li className="sidebarListItem">
+            {/* <li className="sidebarListItem">
               <AttachMoney className="sidebarIcon" />
               Transactions
             </li>
             <li className="sidebarListItem">
               <BarChart className="sidebarIcon" />
               List
-            </li>
+            </li> */}
           </ul>
         </div>
       </div>

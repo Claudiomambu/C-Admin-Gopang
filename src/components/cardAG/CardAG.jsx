@@ -7,6 +7,7 @@ const CardAG = () => {
   const [photo, setPhoto] = useState("");
   const [location, setLocation] = useState("");
   const [size, setSize] = useState("");
+  const [ownerPH, setOwnerPH] = useState("");
 
   const navigate = useNavigate();
 
@@ -37,23 +38,22 @@ const CardAG = () => {
       photo: photo,
       location: location,
       size: size,
+      number: ownerPH,
     };
     console.log(data);
     firebase.database().ref(`gazebo`).push(data);
 
     // firebase.child(`gazebo`).push(data);
-    navigate(`/Dashboard`);
+    navigate(`/gazebo`);
+    setPhoto("");
     setLocation("");
     setSize("");
-    setPhoto("");
+    setOwnerPH("");
   };
 
   return (
     <div className="AGContainer">
       <div className="AddGazebostyle">
-        <span className="AddGazeboTitle">Add Gazebo ...</span>
-        {/* <form className="userUpdateForm"></form> */}
-
         <div className="userUpdateItem">
           {/* Msukan foto Gazebo */}
           <span>Photo</span>
@@ -77,22 +77,33 @@ const CardAG = () => {
             <option value="Pulisan">Pulisan</option>
             <option value="Kinunang">Kinunang</option>
           </select>
-          {location}
+          {/* {location} */}
 
           {/* Pilihan size Gazebo */}
           <span className="Title">Size</span>
           <select
             className="dropdown"
-            placeholder="ukuran"
             value={size}
             onChange={(event) => setSize(event.target.value)}
           >
             <option>--- Choose Size ---</option>
+            <option value="3x2">3x2</option>
             <option value="3x4">3x4</option>
             <option value="5x4">5x4</option>
             <option value="6x4">6x4</option>
           </select>
-          {size}
+          {/* {size} */}
+
+          <span className="Title">Owner Number</span>
+          <input
+            className="PhoneNumber"
+            type="text"
+            placeholder="Input Owner Number"
+            value={ownerPH}
+            onChange={(event) => setOwnerPH(event.target.value)}
+          />
+          {/* {o}wnerPH */}
+
           <button className="ButtonADD" onClick={handleSubmit}>
             Add
           </button>

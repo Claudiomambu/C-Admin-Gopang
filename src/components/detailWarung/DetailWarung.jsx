@@ -52,7 +52,7 @@ export default function DetailWarung(props) {
           </div>
           <div className="DWShowInfo">
             <Timer className="DWShowIcon" />
-            <span className="DWShowInfoTitle">{props.delivery}</span>
+            <span className="DWShowInfoTitle">{props.delivery} Menit</span>
           </div>
 
           <span className="DWShowTitle">Contact Details</span>
@@ -71,8 +71,8 @@ export default function DetailWarung(props) {
     <div className="DHKotak">
       <div className="DHLoading">
         <h3> Loading ....</h3>
-        <span>If the card display doesn't change, </span>
-        <span>Maybe this account doesn't have Warung data</span>
+        <span>Jika tampilan card tidak berubah, </span>
+        <span>Mungkin akun ini tidak memiliki data Warung</span>
       </div>
     </div>
   );

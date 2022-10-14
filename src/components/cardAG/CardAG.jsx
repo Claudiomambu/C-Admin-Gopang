@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 const CardAG = () => {
   const [photo, setPhoto] = useState("");
+  const [name, setName] = useState("");
   const [location, setLocation] = useState("");
   const [size, setSize] = useState("");
   const [ownerPH, setOwnerPH] = useState("");
@@ -36,6 +37,7 @@ const CardAG = () => {
   const handleSubmit = () => {
     const data = {
       photo: photo,
+      name: name,
       location: location,
       size: size,
       number: ownerPH,
@@ -45,6 +47,7 @@ const CardAG = () => {
 
     // firebase.child(`gazebo`).push(data);
     navigate(`/gazebo`);
+    setName("");
     setPhoto("");
     setLocation("");
     setSize("");
@@ -63,6 +66,15 @@ const CardAG = () => {
             onChange={(e) => {
               uploadImage(e);
             }}
+          />
+
+          <span className="Title">Gazebo Name</span>
+          <input
+            className="gazeboName"
+            type="text"
+            placeholder="Input Gazebo Name"
+            value={name}
+            onChange={(event) => setName(event.target.value)}
           />
           <br />
           {/* Pilihan lokasi Gazebo */}

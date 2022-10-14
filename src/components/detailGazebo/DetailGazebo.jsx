@@ -2,6 +2,7 @@ import {
   LocationOnOutlined,
   CropFreeOutlined,
   PhoneAndroid,
+  DeckOutlined,
 } from "@material-ui/icons";
 import "./detailGazebo.css";
 import React, { useState, useEffect } from "react";
@@ -48,18 +49,26 @@ export default function DetailGazebo() {
           <div className="DHShowBottom">
             <span className="DHShowTitle">Gazebo Details</span>
             <div className="DHShowInfo">
+              <DeckOutlined className="DHShowIcon" />
+              <span className="DHShowInfoTitle">{key.name}</span>
+            </div>
+
+            <div className="DHShowInfo">
               <LocationOnOutlined className="DHShowIcon" />
               <span className="DHShowInfoTitle">{key.location} Beach</span>
             </div>
+
             <div className="DHShowInfo">
               <CropFreeOutlined className="DHShowIcon" />
               <span className="DHShowInfoTitle">{key.size} </span>
             </div>
+
             <span className="DHShowTitle">Contact Owner</span>
             <div className="DHShowInfo">
               <PhoneAndroid className="DHShowIcon" />
               <span className="DHShowInfoTitle">{key.number} </span>
             </div>
+
             <button className="DHshowButton" onClick={() => handleDelete(key)}>
               Delete
             </button>

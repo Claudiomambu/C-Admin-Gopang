@@ -1,12 +1,9 @@
 import React, { useState } from "react";
-// import { Alert } from '@mui/material';
+import { Alert } from "@mui/material";
 import { Link, useNavigate } from "react-router-dom";
 import Input from "../../components/Input/input";
 import Button from "../../components/Button/button";
 import firebase from "../../config/firebase";
-// import Swal from "sweetalert2";
-// import withReactContent from "sweetalert2-react-content";
-
 import "./login.css";
 
 const firebaseError = {
@@ -27,24 +24,32 @@ const Login = () => {
   const Navigate = useNavigate();
 
   const handleSubmit = async () => {
-    firebase
-      .auth()
-      .signInWithEmailAndPassword(email, password)
-      .then((res) => {
-        const uid = res.user.uid;
-        // console.log(res.user.uid);
-        Navigate(`/Dashboard`);
-      })
-      .catch((error) => {
-        console.log("error", error);
-        // <Alert severity="error">This is an error alert — check it out!</Alert>;
-        // const MySwal = withReactContent(Swal);
+    if (!email && !password) {
+      <Alert severity="error">This is an error alert — check it out!</Alert>;
+    } else if (!email) {
+      <Alert severity="error">This is an error alert — check it out!</Alert>;
+    } else if (!password) {
+      <Alert severity="error">This is an error alert — check it out!</Alert>;
+    } else {
+      firebase
+        .auth()
+        .signInWithEmailAndPassword(email, password)
+        .then((res) => {
+          const uid = res.user.uid;
+          // console.log(res.user.uid);
+          Navigate(`/Dashboard`);
+        })
+        .catch((error) => {
+          console.log("error", error);
+          // <Alert severity="error">This is an error alert — check it out!</Alert>;
+          // const MySwal = withReactContent(Swal);
 
-        // MySwal.fire({
-        //   title: <strong>Gagal Login!</strong>,
-        //   html: <i>{firebaseError[error.code]}</i>,
-        //   icon: "error",
-      });
+          // MySwal.fire({
+          //   title: <strong>Gagal Login!</strong>,
+          //   html: <i>{firebaseError[error.code]}</i>,
+          //   icon: "error",
+        });
+    }
   };
 
   return (

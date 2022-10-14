@@ -77,8 +77,10 @@ export default function DetailHomestay(props) {
     <div className="DHKotak">
       <div className="DHLoading">
         <h3> Loading ....</h3>
-        <span>If the card display doesn't change, </span>
-        <span>Maybe this account doesn't have Homestay data</span>
+        <span>Jika tampilan card tidak berubah, </span>
+        <span>Mungkin akun ini tidak memiliki data Homestay</span>
+        {/* <span>If the card display doesn't change, </span>
+        <span>Maybe this account doesn't have Homestay data</span> */}
       </div>
     </div>
   );

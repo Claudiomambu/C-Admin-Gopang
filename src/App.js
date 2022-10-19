@@ -18,9 +18,9 @@ function App() {
         {/* <Sidebar /> */}
         <Routes>
           <Route path="/" element={<Login />}></Route>
-          <Route path="/Dashboard" element={<Home />}></Route>
-          <Route path="/users" element={<UserList />}></Route>
-          <Route path="/user/:userId" element={<User />}></Route>
+          <Route path="/:uid/Dashboard" element={<Home />}></Route>
+          <Route path="/:uid/users" element={<UserList />}></Route>
+          <Route path="/:uid/user/:userId" element={<User />}></Route>
           <Route path="/gazebo" element={<Gazebo />}></Route>
           <Route path="/product/:productId" element={<Product />}></Route>
           <Route path="/newproduct" element={<NewProduct />}></Route>

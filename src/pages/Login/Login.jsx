@@ -5,6 +5,7 @@ import Input from "../../components/Input/input";
 import Button from "../../components/Button/button";
 import firebase from "../../config/firebase";
 import "./login.css";
+import Notif from "../../components/notif/Notif";
 
 const firebaseError = {
   "auth/invalid-email": "Kesalahan penulisan format email",
@@ -20,16 +21,30 @@ const firebaseError = {
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [notif, setNotif] = useState({ isOpen: false, pesan: "", type: "" });
 
   const Navigate = useNavigate();
 
-  const handleSubmit = async () => {
+  const handleSubmit = () => {
     if (!email && !password) {
-      <Alert severity="error">This is an error alert — check it out!</Alert>;
+      setNotif({
+        isOpen: true,
+        pesan: "Masukan Email atau Password",
+        type: "error",
+      });
+      // <Alert severity="error">This is an error alert — check it out!</Alert>;
     } else if (!email) {
-      <Alert severity="error">This is an error alert — check it out!</Alert>;
+      setNotif({
+        isOpen: true,
+        pesan: "Masukan Email",
+        type: "error",
+      });
     } else if (!password) {
-      <Alert severity="error">This is an error alert — check it out!</Alert>;
+      setNotif({
+        isOpen: true,
+        pesan: "Masukan Password",
+        type: "error",
+      });
     } else {
       firebase
         .auth()
@@ -37,17 +52,15 @@ const Login = () => {
         .then((res) => {
           const uid = res.user.uid;
           // console.log(res.user.uid);
-          Navigate(`/Dashboard`);
+          Navigate(`/${uid}/Dashboard`);
         })
         .catch((error) => {
           console.log("error", error);
-          // <Alert severity="error">This is an error alert — check it out!</Alert>;
-          // const MySwal = withReactContent(Swal);
-
-          // MySwal.fire({
-          //   title: <strong>Gagal Login!</strong>,
-          //   html: <i>{firebaseError[error.code]}</i>,
-          //   icon: "error",
+          setNotif({
+            isOpen: true,
+            pesan: "Gagal Login - password atau email salah",
+            type: "error",
+          });
         });
     }
   };
@@ -83,6 +96,7 @@ const Login = () => {
           />
         </div>
       </div>
+      <Notif notif={notif} setNotif={setNotif} />
     </div>
   );
 };

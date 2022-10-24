@@ -7,16 +7,19 @@ import {
   PermIdentityTwoTone,
   DeckOutlined,
 } from "@material-ui/icons";
-import { Link } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 
 export default function Sidebar() {
+  const { uid } = useParams();
+  const Navigate = useNavigate();
+
   return (
     <div className="sidebar">
       <div className="sidebarWrapper">
         <div className="sidebarMenu">
           <h3 className="sidebarTitle">Dashboard Owner</h3>
           <ul className="sidebarList">
-            <Link to="/Dashboard" className="link">
+            <Link to={`/${uid}/Dashboard`} className="link">
               <li className="sidebarListItem">
                 <PermIdentityTwoTone className="sidebarIcon" />
                 Owner
@@ -27,13 +30,13 @@ export default function Sidebar() {
         <div className="sidebarMenu">
           <h3 className="sidebarTitle">Another Menu</h3>
           <ul className="sidebarList">
-            <Link to="/users" className="link">
+            <Link to={`/${uid}/users`} className="link">
               <li className="sidebarListItem">
                 <PermIdentity className="sidebarIcon" />
                 Users
               </li>
             </Link>
-            <Link to="/gazebo" className="link">
+            <Link to={`/${uid}/gazebo`} className="link">
               <li className="sidebarListItem">
                 <DeckOutlined className="sidebarIcon" />
                 List Gazebo

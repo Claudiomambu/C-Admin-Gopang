@@ -1,14 +1,18 @@
 import "./cardAG.css";
 import React, { useState, useEffect } from "react";
 import firebase from "../../config/firebase";
-import { useNavigate } from "react-router-dom";
+import Notif from "../../components/notif/Notif";
+import { useParams, useNavigate } from "react-router-dom";
 
 const CardAG = () => {
+  const { uid } = useParams();
   const [photo, setPhoto] = useState("");
   const [name, setName] = useState("");
   const [location, setLocation] = useState("");
   const [size, setSize] = useState("");
   const [ownerPH, setOwnerPH] = useState("");
+
+  const [notif, setNotif] = useState({ isOpen: false, pesan: "", type: "" });
 
   const navigate = useNavigate();
 
@@ -35,23 +39,31 @@ const CardAG = () => {
   };
 
   const handleSubmit = () => {
-    const data = {
-      photo: photo,
-      name: name,
-      location: location,
-      size: size,
-      number: ownerPH,
-    };
-    console.log(data);
-    firebase.database().ref(`gazebo`).push(data);
+    if (!photo || !name || !location || !size || !ownerPH) {
+      setNotif({
+        isOpen: true,
+        pesan: "Tidak Boleh ada data yang kosong",
+        type: "warning",
+      });
+    } else {
+      const data = {
+        photo: photo,
+        name: name,
+        location: location,
+        size: size,
+        number: ownerPH,
+      };
+      console.log(data);
+      firebase.database().ref(`gazebo`).push(data);
 
-    // firebase.child(`gazebo`).push(data);
-    navigate(`/gazebo`);
-    setName("");
-    setPhoto("");
-    setLocation("");
-    setSize("");
-    setOwnerPH("");
+      // firebase.child(`gazebo`).push(data);
+      navigate(`/${uid}/gazebo`);
+      setName("");
+      setPhoto("");
+      setLocation("");
+      setSize("");
+      setOwnerPH("");
+    }
   };
 
   return (
@@ -121,6 +133,7 @@ const CardAG = () => {
           </button>
         </div>
       </div>
+      <Notif notif={notif} setNotif={setNotif} />
     </div>
   );
 };

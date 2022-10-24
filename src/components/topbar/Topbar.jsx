@@ -1,9 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import "./topbar.css";
 import { Link } from "react-router-dom";
-//import { NotificationsNone, Language, Settings } from "@material-ui/icons";
+// import confirmDialog from "../confirmDialog/confirmDialog";
 
 export default function Topbar() {
+  // const [confirmDialog, setConfirmDialog] = useState({
+  //   isOpen: false,
+  //   title: "",
+  //   subTitle: "",
+  // });
   return (
     <div className="topbar">
       <div className="topbarWrapper">
@@ -20,7 +25,18 @@ export default function Topbar() {
             {/* <span className="topIconBadge">2</span> */}
           </div>
           <Link to={"/"}>
-            <button className="logOut">Logout</button>
+            <button
+              className="logOut"
+              // onClick={() => {
+              //   setConfirmDialog({
+              //     isOpen: true,
+              //     title: "Keluar ?",
+              //     subTitle: "Yakin ingin keluar dari halaman Admin Gopang?",
+              //   });
+              // }}
+            >
+              Keluar
+            </button>
           </Link>
 
           {/* <div className="topbarIconContainer">
@@ -32,6 +48,7 @@ export default function Topbar() {
             className="topAvatar"
           /> */}
         </div>
+        {/* <confirmDialog /> */}
       </div>
     </div>
   );

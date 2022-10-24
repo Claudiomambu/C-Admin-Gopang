@@ -37,16 +37,19 @@
 }
 
 .list-Gazebo {
-  /* display: flex; */
-  /* flex-wrap: wrap; */
-  /* flex-direction: row;
-  flex-wrap: wrap-reverse; */
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column-reverse;
+  /* width: 1000px;
+  overflow-y: scroll; */
+  /* flex-wrap: wrap-reverse; */
+  /* display: grid; */
+  grid-template-columns: repeat(3, 1fr);
   grid-gap: 1rem;
 }
 
 .View-AddGazebo {
+  /* margin-top: 10; */
   display: flex;
   flex: 3;
 }

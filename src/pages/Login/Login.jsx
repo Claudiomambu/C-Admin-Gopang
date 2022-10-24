@@ -29,7 +29,7 @@ const Login = () => {
     if (!email && !password) {
       setNotif({
         isOpen: true,
-        pesan: "Masukan Email atau Password",
+        pesan: "Masukan Email dan Password",
         type: "error",
       });
       // <Alert severity="error">This is an error alert — check it out!</Alert>;

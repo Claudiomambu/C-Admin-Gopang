@@ -5,10 +5,16 @@ import React, { useState, useEffect } from "react";
 import Topbar from "../../components/topbar/Topbar";
 import Sidebar from "../../components/sidebar/Sidebar";
 import firebase from "../../config/firebase";
+// import confirmDialog from "../../components/confirmDialog/confirmDialog";
 
 export default function UserList() {
   const { uid } = useParams();
   const [user, setOnUser] = useState([]);
+  // const [confirmDialog, setConfirmDialog] = useState({
+  //   isOpen: false,
+  //   title: "",
+  //   subTitle: "",
+  // });
 
   useEffect(() => {
     firebase
@@ -76,6 +82,13 @@ export default function UserList() {
                   <DeleteOutline
                     className="actionDelete"
                     onClick={() => handleDelete(key)}
+                    // onClick={() => {
+                    //   setConfirmDialog({
+                    //     isOpen: true,
+                    //     title: "Hapus?",
+                    //     subTitle: "Yakin ingin Hapus akun ini?",
+                    //   });
+                    // }}
                   />
                 </td>
               </tr>
@@ -83,6 +96,10 @@ export default function UserList() {
           </table>
         </div>
       </div>
+      {/* <confirmDialog
+        confirmDialog={confirmDialog}
+        setConfirmDialog={setConfirmDialog}
+      /> */}
     </div>
   );
 }
